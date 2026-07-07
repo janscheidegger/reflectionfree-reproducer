@@ -1,5 +1,7 @@
 package org.acme;
 
+import java.util.Map;
+
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -20,6 +22,12 @@ public class GreetingResource {
         greetingWithUser.user = user;
 
         return greetingWithUser;
+    }
 
+    @GET
+    @Path("raw-types")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Map rawTypes() {
+        return Map.of("key", "value");
     }
 }
