@@ -1,7 +1,10 @@
 package org.acme;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -29,5 +32,41 @@ public class GreetingResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Map rawTypes() {
         return Map.of("key", "value");
+    }
+
+    @GET
+    @Path("json-any-getter")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Hero getHero() {
+        Hero hero = new Hero();
+        hero.name = "Batman";
+        hero.additionalProperties = Map.of("color", "black", "parents", "dead");
+        return hero;
+    }
+
+    public static class Hero {
+
+
+        private String name;
+
+        @JsonIgnore
+        @JsonAnyGetter
+        private Map<String, Object> additionalProperties = new LinkedHashMap<>();
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Map<String, Object> getAdditionalProperties() {
+            return additionalProperties;
+        }
+
+        public void setAdditionalProperties(Map<String, Object> additionalProperties) {
+            this.additionalProperties = additionalProperties;
+        }
     }
 }

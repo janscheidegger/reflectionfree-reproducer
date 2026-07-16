@@ -37,5 +37,15 @@ class GreetingResourceReflectionFreeOffTest {
 
     }
 
+    @Test
+    void jsonAnyGetter() {
+        given()
+                .when().get("/hello/json-any-getter")
+                .then()
+                .statusCode(200)
+                .body(containsString("color"));
+
+    }
+
 }
 
