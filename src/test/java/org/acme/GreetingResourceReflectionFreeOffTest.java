@@ -47,5 +47,14 @@ class GreetingResourceReflectionFreeOffTest {
 
     }
 
+    @Test
+    void characterUnboxing() {
+        given()
+                .when().get("/hello/character-unboxing")
+                .then()
+                .statusCode(200);
+
+    }
+
 }
 

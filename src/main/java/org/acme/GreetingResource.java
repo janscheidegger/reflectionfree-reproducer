@@ -44,6 +44,40 @@ public class GreetingResource {
         return hero;
     }
 
+    @GET
+    @Path("character-unboxing")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Villain getVillain() {
+        Villain villain = new Villain();
+        villain.setGender(null);
+        villain.setName("Joker");
+        return villain;
+    }
+
+
+    public static class Villain {
+        private String name;
+
+        private Character gender;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Character getGender() {
+            return gender;
+        }
+
+        public void setGender(Character gender) {
+            this.gender = gender;
+        }
+    }
+
+
     public static class Hero {
 
 

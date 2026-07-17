@@ -29,4 +29,13 @@ class GreetingResourceTest {
                 .statusCode(200)
                 .body(containsString("color"));
     }
+
+    @Test
+    void characterUnboxing() {
+        given()
+                .when().get("/hello/character-unboxing")
+                .then()
+                .statusCode(200);
+
+    }
 }
