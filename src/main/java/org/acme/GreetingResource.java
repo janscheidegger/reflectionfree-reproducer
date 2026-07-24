@@ -1,14 +1,15 @@
 package org.acme;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Path("/hello")
 public class GreetingResource {
@@ -52,6 +53,13 @@ public class GreetingResource {
         villain.setGender(null);
         villain.setName("Joker");
         return villain;
+    }
+
+    @POST
+    @Path("json-alias")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Request getRequest(Request request) {
+        return request;
     }
 
 
