@@ -7,7 +7,7 @@ import java.util.UUID;
 
 public class Request {
 
-    @JsonAlias({"documentId", "id"})
+    @JsonAlias("id")
     private UUID id;
 
     public UUID getId() {
